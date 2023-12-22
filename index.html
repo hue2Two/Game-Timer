@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+   h2 {
+    text-decoration: underline;
+   } 
+
+   #main-container {
+    border: solid red 10px;
+
+    display: inline-flex;
+    flex-direction: column;
+    padding: 5px;
+   }
+
+   #main-container p {
+    text-align: center;
+   }
+
+</style>
+<body>
+    <h2>Game Timer</h2>
+    <br>
+    <div id="main-container">
+        <p id="timer">...</p>
+        <div>
+            <button id="btn-start">start</button>
+            <button id="btn-pause">pause</button>
+            <button id="btn-reset">reset</button>
+        </div>
+
+        <script>
+            // console.log("hello world");
+            let btnStart = document.getElementById("btn-start");
+            let btnPause = document.getElementById("btn-pause");
+            let btnReset = document.getElementById("btn-reset");
+            let timer = document.getElementById("timer");
+            let timer_2 = 0;
+            let interval_ID;
+
+            btnStart.addEventListener("click", () => {
+            console.log("start button was clicked");
+            interval_ID = setInterval(() => {
+                timer_2++;
+                timer.innerText = timer_2;
+            }, 1000);
+            });
+
+
+            btnPause.addEventListener("click", () => {
+                console.log("pause was clicked");
+                clearInterval(interval_ID);
+            })
+
+            btnReset.addEventListener("click", () => {
+                console.log("reset button was clicked");
+                timer_2 = 0;
+                timer.innerText = timer_2;
+                clearInterval(interval_ID);
+            })
+        </script>
+    </div>
+</body>
+</html>
